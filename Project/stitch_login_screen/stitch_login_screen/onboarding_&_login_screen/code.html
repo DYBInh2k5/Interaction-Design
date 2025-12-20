@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StockVision Onboarding</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d7ff2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body>
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-dark dark:bg-background-dark group/design-root overflow-x-hidden font-display">
+<!-- Gradient Background Layer -->
+<div class="absolute inset-0 bg-gradient-to-br from-[#0a192f] via-[#102a43] to-[#042f2e] opacity-100 z-0"></div>
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent z-0"></div>
+<!-- Main Content Wrapper -->
+<div class="relative z-10 flex flex-col flex-grow h-full justify-between p-4">
+<!-- Top Section: Header & Tagline -->
+<div class="flex flex-col w-full">
+<!-- Top App Bar -->
+<div class="flex items-center justify-between py-2">
+<div class="flex items-center gap-2">
+<div class="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-[20px]">candlestick_chart</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">StockVision</h2>
+</div>
+<button class="flex items-center justify-end px-2 py-1 rounded-full hover:bg-white/5 active:bg-white/10 transition-colors">
+<p class="text-[#9cabba] text-sm font-bold leading-normal tracking-[0.015em]">Skip</p>
+</button>
+</div>
+<!-- Tagline -->
+<div class="mt-6 mb-2">
+<p class="text-emerald-400 tracking-wider text-sm font-bold uppercase text-center opacity-90">Track. Analyze. Grow.</p>
+</div>
+</div>
+<!-- Middle Section: Illustration & Welcome Text -->
+<div class="flex flex-col items-center justify-center w-full flex-grow my-4 gap-6">
+<!-- Hero Image/Illustration -->
+<div class="w-full max-w-[320px] aspect-square relative flex items-center justify-center">
+<!-- Glow effect behind image -->
+<div class="absolute inset-0 bg-primary/20 blur-[60px] rounded-full"></div>
+<div class="relative w-full h-full bg-center bg-contain bg-no-repeat z-10" data-alt="Futuristic neon glowing candlestick stock chart rising upwards on dark background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCso5I1SYJhXXAfeYNdqbBrl3MXaxHotAcZpagNRqmyvWibNT7BJY0jE24TcmjwJLAk0d-yCXeZ5522PtRHO4CFn2MprHfoQlTA9wM6AfXdohuPLCU67FNh3EvW4s8h5tjFHe2PXHrKKTdUz1A8Ta-1EnfMKf87h60K69MhsSXKEaALXCpherassDxLn2ykjmvHMDnXw_7UAYgd3gEq3yQM4FkbUBgX9ESSWLa4FQZC05AjS1BDfQrZrRTZY5yZlwav_HrwQgp0v2XY");'>
+</div>
+</div>
+<!-- Headline & Body -->
+<div class="flex flex-col items-center text-center max-w-sm mx-auto">
+<h1 class="text-white tracking-tight text-[32px] font-extrabold leading-tight pb-3">Welcome to StockVision</h1>
+<p class="text-[#9cabba] text-base font-medium leading-relaxed">Your all-in-one platform to monitor, analyze and trade smarter.</p>
+</div>
+</div>
+<!-- Bottom Section: Actions -->
+<div class="flex flex-col w-full gap-4 pb-4">
+<!-- Main Buttons -->
+<div class="flex flex-col gap-3">
+<button class="flex w-full items-center justify-center rounded-xl bg-primary px-4 py-3.5 text-white shadow-[0_0_20px_rgba(13,127,242,0.4)] transition-all hover:shadow-[0_0_25px_rgba(13,127,242,0.6)] hover:bg-primary/90 active:scale-[0.98]">
+<span class="text-base font-bold tracking-tight">Sign In</span>
+</button>
+<button class="flex w-full items-center justify-center rounded-xl border border-white/20 bg-transparent px-4 py-3.5 text-white transition-colors hover:bg-white/5 active:bg-white/10">
+<span class="text-base font-bold tracking-tight">Create Account</span>
+</button>
+</div>
+<!-- Social Login & Divider -->
+<div class="flex flex-col gap-4 mt-2">
+<div class="relative flex items-center py-1">
+<div class="flex-grow border-t border-white/10"></div>
+<span class="flex-shrink-0 mx-4 text-xs font-medium text-[#9cabba]">Or continue with</span>
+<div class="flex-grow border-t border-white/10"></div>
+</div>
+<div class="flex gap-4 justify-center">
+<button class="flex h-12 w-full flex-1 items-center justify-center gap-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors">
+<svg class="h-5 w-5" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+</button>
+<button class="flex h-12 w-full flex-1 items-center justify-center gap-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors">
+<svg class="h-5 w-5 text-white" fill="currentColor" viewbox="0 0 24 24">
+<path d="M17.05 20.28c-.98.95-2.05.88-3.08.35-1.09-.56-2.09-.48-3.08.35-1.48 1.22-2.96.55-2.96.55s-5.17-5.46-1.57-11.23c2.06-3.31 5.61-2.91 5.61-2.91s1.39-1.49 3.82-.41c1.33.6 2.05-.18 2.05-.18s1.61 1.05 2.5 3.19c-2.43 1.29-2.05 5.82 1.54 7.21-.49 1.94-1.92 3.86-2.83 5.08h-.01zM14.94 4.54c.73-.89.96-2.13.68-3.23-1.12.18-2.31.78-2.91 1.63-.59.83-.87 2.03-.66 3.08 1.18.06 2.25-.56 2.89-1.48z"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- Footer Link -->
+<div class="flex justify-center mt-2">
+<button class="text-sm font-medium text-[#9cabba] hover:text-primary transition-colors">
+                        Forgot Password?
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StockVision Watchlist</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d7ff2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                        "stock-green": "#00C853",
+                        "stock-red": "#FF5252",
+                        "surface-dark": "#1e2229",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased selection:bg-primary/30">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-hidden mx-auto max-w-md bg-background-light dark:bg-background-dark shadow-2xl">
+<!-- Header -->
+<header class="sticky top-0 z-30 flex items-center justify-between bg-background-light/95 dark:bg-background-dark/95 px-4 py-3 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+<div>
+<h1 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">My Watchlist</h1>
+<p class="text-xs text-slate-500 dark:text-gray-400 font-medium">Updated 10:42 AM</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex h-10 w-10 items-center justify-center rounded-full text-slate-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</button>
+<button class="flex h-10 w-10 items-center justify-center rounded-full text-slate-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-[24px]">add</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto no-scrollbar pb-24">
+<!-- Market Summary Stats -->
+<section class="py-4">
+<div class="flex gap-4 overflow-x-auto px-4 no-scrollbar pb-2">
+<!-- S&P 500 Card -->
+<div class="flex min-w-[160px] flex-col gap-1 rounded-xl bg-white dark:bg-surface-dark p-4 shadow-sm border border-gray-200 dark:border-gray-700/50">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold uppercase text-slate-500 dark:text-gray-400">S&amp;P 500</span>
+<span class="material-symbols-outlined text-stock-green text-[20px]">trending_up</span>
+</div>
+<p class="text-xl font-bold text-slate-900 dark:text-white mt-1">4,567.80</p>
+<p class="text-sm font-semibold text-stock-green">+0.85%</p>
+</div>
+<!-- NASDAQ Card -->
+<div class="flex min-w-[160px] flex-col gap-1 rounded-xl bg-white dark:bg-surface-dark p-4 shadow-sm border border-gray-200 dark:border-gray-700/50">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold uppercase text-slate-500 dark:text-gray-400">NASDAQ</span>
+<span class="material-symbols-outlined text-stock-red text-[20px]">trending_down</span>
+</div>
+<p class="text-xl font-bold text-slate-900 dark:text-white mt-1">14,200.50</p>
+<p class="text-sm font-semibold text-stock-red">-0.24%</p>
+</div>
+<!-- Dow Jones Card -->
+<div class="flex min-w-[160px] flex-col gap-1 rounded-xl bg-white dark:bg-surface-dark p-4 shadow-sm border border-gray-200 dark:border-gray-700/50">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold uppercase text-slate-500 dark:text-gray-400">Dow Jones</span>
+<span class="material-symbols-outlined text-stock-green text-[20px]">trending_up</span>
+</div>
+<p class="text-xl font-bold text-slate-900 dark:text-white mt-1">35,100.20</p>
+<p class="text-sm font-semibold text-stock-green">+0.15%</p>
+</div>
+</div>
+</section>
+<!-- Filters & Search -->
+<section class="px-4 pb-4">
+<div class="mb-4">
+<div class="relative flex h-11 w-full items-center rounded-xl bg-white dark:bg-surface-dark px-4 shadow-sm border border-gray-200 dark:border-gray-700/50">
+<span class="material-symbols-outlined text-slate-400 dark:text-gray-500 text-[20px]">search</span>
+<input class="h-full w-full flex-1 border-none bg-transparent px-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-0" placeholder="Search symbols or companies" type="text"/>
+</div>
+</div>
+<div class="flex gap-2 overflow-x-auto no-scrollbar">
+<button class="whitespace-nowrap rounded-full bg-primary px-4 py-1.5 text-xs font-medium text-white transition-colors">
+                        All Assets
+                    </button>
+<button class="whitespace-nowrap rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 px-4 py-1.5 text-xs font-medium text-slate-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                        Top Movers
+                    </button>
+<button class="whitespace-nowrap rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 px-4 py-1.5 text-xs font-medium text-slate-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                        Crypto
+                    </button>
+<button class="whitespace-nowrap rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 px-4 py-1.5 text-xs font-medium text-slate-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                        Tech
+                    </button>
+</div>
+</section>
+<!-- Stock List -->
+<section class="flex flex-col px-4 gap-3">
+<!-- Stock Item: AAPL (Gain) -->
+<div class="group flex items-center justify-between rounded-xl bg-white dark:bg-surface-dark p-4 shadow-sm active:scale-[0.98] transition-all border border-transparent hover:border-gray-200 dark:hover:border-gray-700 cursor-pointer">
+<div class="flex items-center gap-3 w-1/3">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 overflow-hidden">
+<img class="h-6 w-6 object-contain opacity-80 dark:invert" data-alt="Apple logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNGfnN5fQVqsJ4x7X7SLSOPb8SReKkoFXh9FhqJrTLDzEKmLLx3doXXp-u_zqNBSC0nljnRutE5Nd8TXIQ87mxhQMoByNiXzT40hepXPtpfvCM97woZPQF6bnHuoCmbo9o7QyxOxOB8gkKbg0uUK21VpGp0W_Jglx0RSLMq2DZaUUFrnYlgzQXGa-dUl8I6ZR0ByO8v6Ly9Xq0nPlhQaoGIQBwSWEl-jVV7jFMDcx3IEUUGk1eO7zYs2KRZJcilznGmZ0O3Vxfy0aM"/>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">AAPL</span>
+<span class="text-xs text-slate-500 dark:text-gray-400 truncate">Apple Inc.</span>
+</div>
+</div>
+<div class="flex w-1/4 justify-center">
+<svg fill="none" height="24" viewbox="0 0 60 24" width="60" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 18L10 14L18 16L28 8L36 12L45 5L59 1" stroke="#00C853" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="flex flex-col items-end w-1/3">
+<span class="text-sm font-bold text-slate-900 dark:text-white tabular-nums">$189.45</span>
+<div class="flex items-center rounded bg-stock-green/10 px-1.5 py-0.5 mt-0.5">
+<span class="text-xs font-semibold text-stock-green tabular-nums">+1.20%</span>
+</div>
+</div>
+</div>
+<!-- Stock Item: TSLA (Loss) -->
+<div class="group flex items-center justify-between rounded-xl bg-white dark:bg-surface-dark p-4 shadow-sm active:scale-[0.98] transition-all border border-transparent hover:border-gray-200 dark:hover:border-gray-700 cursor-pointer">
+<div class="flex items-center gap-3 w-1/3">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 overflow-hidden">
+<img class="h-6 w-6 object-contain opacity-80 dark:invert" data-alt="Tesla logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtqtJhCygHheboUWVOVsQpS51OFxZ6D9kFexs1I9m4Wvk90g7STQp7qy7N69CtzsEf_KRQ1jkTgo7fqarpJIn5OMkFs3QM2pj3BCjCKwlIpJV98_ndHfu87MePawe2DZFZwNOa4zXOTPkKFaerh4xH7GV61YMkCvtZurZfDZcb0WPIzGvqB2T6IBMCu3Jea0t95EzzmnnTzhI5BIQ9c3o_qsgZhvFYZnqQ0vKpuWk2niMVdTirOsJdyE8mEjtfISDMzTOi7T70_7lM"/>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">TSLA</span>
+<span class="text-xs text-slate-500 dark:text-gray-400 truncate">Tesla Inc.</span>
+</div>
+</div>
+<div class="flex w-1/4 justify-center">
+<svg fill="none" height="24" viewbox="0 0 60 24" width="60" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 5L12 10L20 8L30 18L40 14L50 20L59 22" stroke="#FF5252" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="flex flex-col items-end w-1/3">
+<span class="text-sm font-bold text-slate-900 dark:text-white tabular-nums">$238.20</span>
+<div class="flex items-center rounded bg-stock-red/10 px-1.5 py-0.5 mt-0.5">
+<span class="text-xs font-semibold text-stock-red tabular-nums">-3.45%</span>
+</div>
+</div>
+</div>
+<!-- Stock Item: NVDA (Gain) -->
+<div class="group flex items-center justify-between rounded-xl bg-white dark:bg-surface-dark p-4 shadow-sm active:scale-[0.98] transition-all border border-transparent hover:border-gray-200 dark:hover:border-gray-700 cursor-pointer">
+<div class="flex items-center gap-3 w-1/3">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 overflow-hidden">
+<span class="text-xs font-bold text-slate-700 dark:text-gray-300">NVDA</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">NVDA</span>
+<span class="text-xs text-slate-500 dark:text-gray-400 truncate">NVIDIA Corp.</span>
+</div>
+</div>
+<div class="flex w-1/4 justify-center">
+<svg fill="none" height="24" viewbox="0 0 60 24" width="60" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 12L8 14L16 10L24 16L32 8L44 6L59 2" stroke="#00C853" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="flex flex-col items-end w-1/3">
+<span class="text-sm font-bold text-slate-900 dark:text-white tabular-nums">$465.12</span>
+<div class="flex items-center rounded bg-stock-green/10 px-1.5 py-0.5 mt-0.5">
+<span class="text-xs font-semibold text-stock-green tabular-nums">+4.12%</span>
+</div>
+</div>
+</div>
+<!-- Stock Item: BTC (Crypto) -->
+<div class="group flex items-center justify-between rounded-xl bg-white dark:bg-surface-dark p-4 shadow-sm active:scale-[0.98] transition-all border border-transparent hover:border-gray-200 dark:hover:border-gray-700 cursor-pointer">
+<div class="flex items-center gap-3 w-1/3">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#F7931A] text-white overflow-hidden">
+<span class="material-symbols-outlined text-lg">currency_bitcoin</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">BTC</span>
+<span class="text-xs text-slate-500 dark:text-gray-400 truncate">Bitcoin</span>
+</div>
+</div>
+<div class="flex w-1/4 justify-center">
+<svg fill="none" height="24" viewbox="0 0 60 24" width="60" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 20L10 12L20 16L30 8L45 10L59 4" stroke="#00C853" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="flex flex-col items-end w-1/3">
+<span class="text-sm font-bold text-slate-900 dark:text-white tabular-nums">$42,105</span>
+<div class="flex items-center rounded bg-stock-green/10 px-1.5 py-0.5 mt-0.5">
+<span class="text-xs font-semibold text-stock-green tabular-nums">+2.8%</span>
+</div>
+</div>
+</div>
+<!-- Stock Item: AMZN (Flat/Minor Loss) -->
+<div class="group flex items-center justify-between rounded-xl bg-white dark:bg-surface-dark p-4 shadow-sm active:scale-[0.98] transition-all border border-transparent hover:border-gray-200 dark:hover:border-gray-700 cursor-pointer">
+<div class="flex items-center gap-3 w-1/3">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 overflow-hidden">
+<span class="text-xs font-bold text-slate-700 dark:text-gray-300">AMZN</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">AMZN</span>
+<span class="text-xs text-slate-500 dark:text-gray-400 truncate">Amazon.com</span>
+</div>
+</div>
+<div class="flex w-1/4 justify-center">
+<svg fill="none" height="24" viewbox="0 0 60 24" width="60" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 10L10 10L20 12L30 10L40 14L50 12L59 13" stroke="#FF5252" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="flex flex-col items-end w-1/3">
+<span class="text-sm font-bold text-slate-900 dark:text-white tabular-nums">$145.20</span>
+<div class="flex items-center rounded bg-stock-red/10 px-1.5 py-0.5 mt-0.5">
+<span class="text-xs font-semibold text-stock-red tabular-nums">-0.12%</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation -->
+<nav class="absolute bottom-0 z-40 w-full border-t border-gray-200 dark:border-gray-800 bg-white/90 dark:bg-background-dark/95 backdrop-blur-lg pb-safe">
+<div class="flex h-16 items-center justify-around px-2">
+<a class="flex flex-col items-center gap-1 p-2 text-primary" href="#">
+<span class="material-symbols-outlined filled text-[26px]">visibility</span>
+<span class="text-[10px] font-medium">Watchlist</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-slate-400 dark:text-gray-500 hover:text-slate-600 dark:hover:text-gray-300 transition-colors" href="#">
+<span class="material-symbols-outlined text-[26px]">pie_chart</span>
+<span class="text-[10px] font-medium">Portfolio</span>
+</a>
+<div class="relative -top-5">
+<button class="flex h-14 w-14 items-center justify-center rounded-full bg-primary shadow-lg shadow-primary/40 text-white transition-transform active:scale-95">
+<span class="material-symbols-outlined text-[32px]">swap_horiz</span>
+</button>
+</div>
+<a class="flex flex-col items-center gap-1 p-2 text-slate-400 dark:text-gray-500 hover:text-slate-600 dark:hover:text-gray-300 transition-colors" href="#">
+<span class="material-symbols-outlined text-[26px]">newspaper</span>
+<span class="text-[10px] font-medium">News</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-slate-400 dark:text-gray-500 hover:text-slate-600 dark:hover:text-gray-300 transition-colors" href="#">
+<span class="material-symbols-outlined text-[26px]">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

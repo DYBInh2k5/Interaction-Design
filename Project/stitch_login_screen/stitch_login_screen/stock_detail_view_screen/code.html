@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stock Detail View Screen</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d7ff2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#111418", // Deep dark background
+                        "surface-dark": "#1c2128", // Slightly lighter for cards
+                        "gain": "#00C853",
+                        "loss": "#FF5252",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for horizontal scrolling if needed */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary/30">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden pb-24">
+<!-- Header -->
+<header class="sticky top-0 z-50 flex items-center justify-between bg-background-light/90 dark:bg-background-dark/90 px-4 py-3 backdrop-blur-md">
+<button class="flex h-10 w-10 items-center justify-center rounded-full text-slate-500 hover:bg-slate-200 dark:text-slate-400 dark:hover:bg-surface-dark transition-colors">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<h2 class="text-base font-bold leading-tight tracking-tight">AAPL</h2>
+<span class="text-xs font-medium text-slate-500 dark:text-slate-400">Apple Inc.</span>
+</div>
+<button class="flex h-10 w-10 items-center justify-center rounded-full text-slate-500 hover:bg-slate-200 dark:text-slate-400 dark:hover:bg-surface-dark transition-colors">
+<span class="material-symbols-outlined text-[24px]">star</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col w-full max-w-md mx-auto">
+<!-- Price Hero -->
+<div class="px-5 pt-4 pb-2 text-center">
+<h1 class="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">$175.34</h1>
+<div class="mt-1 flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-gain text-[20px]">arrow_drop_up</span>
+<span class="text-lg font-semibold text-gain">+1.24%</span>
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">($2.15) Today</span>
+</div>
+</div>
+<!-- Chart Section -->
+<div class="w-full py-4">
+<!-- Timeframe Selector -->
+<div class="flex justify-center px-4 mb-4">
+<div class="flex w-full max-w-xs items-center justify-between rounded-lg bg-slate-200 dark:bg-surface-dark p-1">
+<button class="flex-1 rounded-md py-1 text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">1D</button>
+<button class="flex-1 rounded-md bg-white dark:bg-slate-600 py-1 text-xs font-bold text-slate-900 dark:text-white shadow-sm">1W</button>
+<button class="flex-1 rounded-md py-1 text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">1M</button>
+<button class="flex-1 rounded-md py-1 text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">3M</button>
+<button class="flex-1 rounded-md py-1 text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">1Y</button>
+<button class="flex-1 rounded-md py-1 text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">ALL</button>
+</div>
+</div>
+<!-- Main Chart SVG -->
+<div class="relative h-[240px] w-full px-0 group">
+<!-- Price Tag Overlay (Simulated Hover) -->
+<div class="absolute right-4 top-10 z-10 hidden rounded bg-slate-800 px-2 py-1 text-xs font-bold text-white shadow-lg group-hover:block dark:bg-slate-700">
+                        $176.42
+                    </div>
+<!-- SVG Chart -->
+<svg class="h-full w-full overflow-visible" preserveaspectratio="none" viewbox="0 0 375 200">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#00C853" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#00C853" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Grid Lines (Subtle) -->
+<line opacity="0.3" stroke="#334155" stroke-dasharray="4 4" stroke-width="0.5" x1="0" x2="375" y1="50" y2="50"></line>
+<line opacity="0.3" stroke="#334155" stroke-dasharray="4 4" stroke-width="0.5" x1="0" x2="375" y1="100" y2="100"></line>
+<line opacity="0.3" stroke="#334155" stroke-dasharray="4 4" stroke-width="0.5" x1="0" x2="375" y1="150" y2="150"></line>
+<!-- Main Line -->
+<path d="M0,140 C20,130 40,150 60,145 C80,140 100,110 120,115 C140,120 160,90 180,85 C200,80 220,95 240,70 C260,45 280,60 300,50 C320,40 340,30 375,20" fill="url(#chartGradient)" stroke="#00C853" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<!-- Candlestick Simulation (Overlay) -->
+<!-- Just a few to suggest the feature -->
+<line opacity="0.6" stroke="#FF5252" stroke-width="1" x1="40" x2="40" y1="140" y2="155"></line>
+<rect fill="#FF5252" height="8" opacity="0.6" width="6" x="37" y="145"></rect>
+<line opacity="0.6" stroke="#00C853" stroke-width="1" x1="120" x2="120" y1="105" y2="125"></line>
+<rect fill="#00C853" height="10" opacity="0.6" width="6" x="117" y="110"></rect>
+<line opacity="0.6" stroke="#00C853" stroke-width="1" x1="240" x2="240" y1="60" y2="80"></line>
+<rect fill="#00C853" height="8" opacity="0.6" width="6" x="237" y="65"></rect>
+<!-- Crosshair Line (Interactive Feel) -->
+<line opacity="0.5" stroke="#94a3b8" stroke-dasharray="4 2" stroke-width="1" x1="280" x2="280" y1="0" y2="200"></line>
+<circle cx="280" cy="60" fill="#00C853" r="4" stroke="#fff" stroke-width="2"></circle>
+<!-- Volume Bars at Bottom -->
+<g opacity="0.5">
+<rect fill="#00C853" height="20" rx="1" width="4" x="10" y="180"></rect>
+<rect fill="#FF5252" height="30" rx="1" width="4" x="25" y="170"></rect>
+<rect fill="#00C853" height="15" rx="1" width="4" x="40" y="185"></rect>
+<rect fill="#00C853" height="25" rx="1" width="4" x="55" y="175"></rect>
+<rect fill="#FF5252" height="10" rx="1" width="4" x="70" y="190"></rect>
+<rect fill="#00C853" height="35" rx="1" width="4" x="85" y="165"></rect>
+<rect fill="#00C853" height="22" rx="1" width="4" x="100" y="178"></rect>
+<rect fill="#FF5252" height="18" rx="1" width="4" x="115" y="182"></rect>
+<rect fill="#00C853" height="30" rx="1" width="4" x="130" y="170"></rect>
+<rect fill="#00C853" height="15" rx="1" width="4" x="145" y="185"></rect>
+<rect fill="#00C853" height="40" rx="1" width="4" x="160" y="160"></rect>
+<rect fill="#FF5252" height="20" rx="1" width="4" x="175" y="180"></rect>
+<rect fill="#00C853" height="25" rx="1" width="4" x="190" y="175"></rect>
+<rect fill="#FF5252" height="12" rx="1" width="4" x="205" y="188"></rect>
+<rect fill="#00C853" height="28" rx="1" width="4" x="220" y="172"></rect>
+<rect fill="#00C853" height="45" rx="1" width="4" x="235" y="155"></rect>
+<rect fill="#FF5252" height="20" rx="1" width="4" x="250" y="180"></rect>
+<rect fill="#00C853" height="30" rx="1" width="4" x="265" y="170"></rect>
+<rect fill="#00C853" height="35" rx="1" width="4" x="280" y="165"></rect>
+<rect fill="#FF5252" height="15" rx="1" width="4" x="295" y="185"></rect>
+<rect fill="#00C853" height="25" rx="1" width="4" x="310" y="175"></rect>
+<rect fill="#00C853" height="20" rx="1" width="4" x="325" y="180"></rect>
+<rect fill="#00C853" height="30" rx="1" width="4" x="340" y="170"></rect>
+<rect fill="#FF5252" height="25" rx="1" width="4" x="355" y="175"></rect>
+</g>
+</svg>
+<!-- Time Axis -->
+<div class="flex justify-between px-4 text-[10px] font-medium text-slate-400">
+<span>09:30 AM</span>
+<span>12:00 PM</span>
+<span>04:00 PM</span>
+</div>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="px-5 py-6">
+<h3 class="mb-4 text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Key Statistics</h3>
+<div class="grid grid-cols-2 gap-4 gap-y-6">
+<div>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400">Open</p>
+<p class="mt-1 font-display text-base font-semibold text-slate-900 dark:text-white">$173.00</p>
+</div>
+<div>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400">High</p>
+<p class="mt-1 font-display text-base font-semibold text-slate-900 dark:text-white">$176.10</p>
+</div>
+<div>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400">Low</p>
+<p class="mt-1 font-display text-base font-semibold text-slate-900 dark:text-white">$172.50</p>
+</div>
+<div>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400">Volume</p>
+<p class="mt-1 font-display text-base font-semibold text-slate-900 dark:text-white">54.2M</p>
+</div>
+<div>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400">Mkt Cap</p>
+<p class="mt-1 font-display text-base font-semibold text-slate-900 dark:text-white">2.74T</p>
+</div>
+<div>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400">P/E Ratio</p>
+<p class="mt-1 font-display text-base font-semibold text-slate-900 dark:text-white">28.4</p>
+</div>
+</div>
+</div>
+<!-- Sentiment Gauge -->
+<div class="px-5 pb-6">
+<h3 class="mb-3 text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Analyst Sentiment</h3>
+<div class="flex items-center justify-between text-xs font-bold mb-2">
+<span class="text-gain">Bullish 68%</span>
+<span class="text-loss">Bearish 32%</span>
+</div>
+<div class="flex h-2 w-full overflow-hidden rounded-full bg-surface-dark">
+<div class="h-full bg-gain" style="width: 68%"></div>
+<div class="h-full bg-loss" style="width: 32%"></div>
+</div>
+<div class="mt-4 flex gap-4 overflow-x-auto hide-scrollbar pb-2">
+<div class="min-w-[140px] rounded-xl bg-slate-100 dark:bg-surface-dark p-3">
+<div class="flex items-center gap-2 mb-2">
+<div class="h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-[10px]">MS</div>
+<span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Morgan S.</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400">Maintains Overweight</p>
+<p class="text-sm font-bold text-slate-900 dark:text-white mt-1">$210 Target</p>
+</div>
+<div class="min-w-[140px] rounded-xl bg-slate-100 dark:bg-surface-dark p-3">
+<div class="flex items-center gap-2 mb-2">
+<div class="h-6 w-6 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 font-bold text-[10px]">GS</div>
+<span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Goldman S.</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400">Buy Rating</p>
+<p class="text-sm font-bold text-slate-900 dark:text-white mt-1">$200 Target</p>
+</div>
+<div class="min-w-[140px] rounded-xl bg-slate-100 dark:bg-surface-dark p-3">
+<div class="flex items-center gap-2 mb-2">
+<div class="h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold text-[10px]">JP</div>
+<span class="text-xs font-semibold text-slate-700 dark:text-slate-300">JPMorgan</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400">Neutral</p>
+<p class="text-sm font-bold text-slate-900 dark:text-white mt-1">$185 Target</p>
+</div>
+</div>
+</div>
+<!-- News Section Stub -->
+<div class="px-5 pb-8">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Recent News</h3>
+<a class="text-xs font-bold text-primary" href="#">View All</a>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex gap-4 items-start">
+<div class="h-16 w-16 shrink-0 overflow-hidden rounded-lg bg-slate-200 dark:bg-slate-700">
+<img alt="News thumbnail" class="h-full w-full object-cover" data-alt="Apple store front glass cube" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnenPsof_A0B53V6QeR2dq8Xpz7b_3U5oISDXBLkah5g-Za4FxxKX3zohj6FcaFf6XX2mwhskPdArHcOZUUYWHtlwZ_qnm66md-3dx4ufCRiWnPvjy2y--Zd1k7nSTIR59FCmn3m-4R72FdVJ9OQRHlJyyxUsC48ZqkmiveLwVLzXv_gEkI4pn-759R_aZg5iRE3mo38BAPD3RGvKgNGOdrhIa-Jg9WXZgQ3uckKvWRIb3cEcf03qxaA5iNh5k-yuienT5CKeJUM0o"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-[10px] font-bold uppercase text-slate-500">CNBC</span>
+<span class="h-0.5 w-0.5 rounded-full bg-slate-500"></span>
+<span class="text-[10px] text-slate-500">2h ago</span>
+</div>
+<h4 class="text-sm font-semibold leading-tight text-slate-900 dark:text-white">Apple announces new AI features coming to iOS 18 later this year.</h4>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Footer Action Bar -->
+<div class="fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 bg-background-light/95 backdrop-blur dark:border-slate-800 dark:bg-background-dark/95">
+<div class="mx-auto flex w-full max-w-md flex-col px-4 pb-6 pt-3">
+<!-- Tabs -->
+<div class="flex w-full justify-between px-2 pb-3">
+<button class="flex flex-col items-center gap-1 text-xs font-medium text-slate-400 hover:text-white">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+                        Overview
+                    </button>
+<button class="flex flex-col items-center gap-1 text-xs font-medium text-primary">
+<span class="material-symbols-outlined text-[20px] fill-1">show_chart</span>
+                        Chart
+                    </button>
+<button class="flex flex-col items-center gap-1 text-xs font-medium text-slate-400 hover:text-white">
+<span class="material-symbols-outlined text-[20px]">newspaper</span>
+                        News
+                    </button>
+<button class="flex flex-col items-center gap-1 text-xs font-medium text-slate-400 hover:text-white">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+                        Analysis
+                    </button>
+</div>
+<!-- Action Buttons -->
+<div class="flex gap-3">
+<button class="flex-1 rounded-xl bg-loss px-4 py-3.5 text-center text-base font-bold text-white shadow-lg shadow-loss/20 transition-transform active:scale-95">
+                        Sell
+                    </button>
+<button class="flex-1 rounded-xl bg-gain px-4 py-3.5 text-center text-base font-bold text-white shadow-lg shadow-gain/20 transition-transform active:scale-95">
+                        Buy
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

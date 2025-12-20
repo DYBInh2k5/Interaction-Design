@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StockVision Dashboard</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d7ff2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1c2630",
+                        "accent-green": "#0bda5b",
+                        "accent-red": "#ff4b4b",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hide for cleaner UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary/30">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-hidden pb-24">
+<!-- Header Section -->
+<header class="flex items-center justify-between px-5 pt-8 pb-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 ring-2 ring-primary/20" data-alt="User profile avatar showing a smiling face" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBfhfB8qXs2jNhOSblGnkrv7JAVwtlZu707fIc2_IOD7pbOyskX2sIRxeNjI1Ek67D0pTWHJhPF6xGFPTOL75NaN6W-0NDmqo9VrTt8CHqfrIWPJYxqUpqy1PWv5E5iNTHPSTXNAR3ZVpYFkmJV8gmRMeGp44GK1Fjw9UwZubawgr2nUjepxPWFotwDoFRXRKc0AxmoozXzpJ0bgNTLBmBronW9yFlXU71DhsD7RsBNtkFyYZOYm0ZsAuaAUAm_97V11VYc4CzD-Q2p");'>
+</div>
+<div class="absolute bottom-0 right-0 size-3 bg-accent-green rounded-full border-2 border-background-dark"></div>
+</div>
+<div>
+<h2 class="text-slate-400 text-xs font-medium uppercase tracking-wider">Welcome back</h2>
+<h1 class="text-white text-lg font-bold leading-tight">Cody</h1>
+</div>
+</div>
+<button class="relative flex size-10 items-center justify-center rounded-full bg-surface-dark hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-white" style="font-size: 24px;">notifications</span>
+<span class="absolute top-2.5 right-2.5 size-2 bg-accent-red rounded-full"></span>
+</button>
+</header>
+<!-- Portfolio Value Section -->
+<section class="flex flex-col items-center justify-center pt-2 pb-6">
+<h3 class="text-slate-400 text-sm font-medium mb-1">Total Balance</h3>
+<h1 class="text-4xl font-extrabold tracking-tight text-white mb-2 drop-shadow-[0_0_15px_rgba(13,127,242,0.15)]">$24,592.40</h1>
+<div class="flex items-center gap-1 bg-accent-green/10 px-3 py-1 rounded-full border border-accent-green/20">
+<span class="material-symbols-outlined text-accent-green" style="font-size: 18px;">trending_up</span>
+<span class="text-accent-green text-sm font-bold">+$1,204.20 (5.8%)</span>
+<span class="text-slate-400 text-xs ml-1">Today</span>
+</div>
+</section>
+<!-- Chart Controls -->
+<div class="px-5 mb-4">
+<div class="flex w-full items-center justify-between bg-surface-dark rounded-xl p-1 gap-1">
+<button class="flex-1 py-1.5 text-xs font-bold text-slate-400 hover:text-white rounded-lg transition-colors">1D</button>
+<button class="flex-1 py-1.5 text-xs font-bold text-slate-400 hover:text-white rounded-lg transition-colors">1W</button>
+<button class="flex-1 py-1.5 text-xs font-bold bg-primary text-white shadow-sm shadow-primary/25 rounded-lg">1M</button>
+<button class="flex-1 py-1.5 text-xs font-bold text-slate-400 hover:text-white rounded-lg transition-colors">1Y</button>
+<button class="flex-1 py-1.5 text-xs font-bold text-slate-400 hover:text-white rounded-lg transition-colors">ALL</button>
+</div>
+</div>
+<!-- Chart Visualization -->
+<div class="relative w-full h-48 px-0 mb-8 group">
+<!-- Tooltip Line (Hidden by default, shown for demo/static visual) -->
+<div class="absolute left-1/2 top-4 bottom-8 w-[1px] bg-slate-600 border-r border-dashed border-slate-600 opacity-50 z-10"></div>
+<div class="absolute left-1/2 top-10 -translate-x-1/2 z-20 bg-slate-800 text-white text-xs font-bold px-2 py-1 rounded border border-slate-700 shadow-xl">
+                $23,800.00
+            </div>
+<svg class="w-full h-full overflow-visible" fill="none" preserveaspectratio="none" viewbox="0 0 375 180" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="chartGradient" x1="187.5" x2="187.5" y1="0" y2="180">
+<stop stop-color="#0d7ff2" stop-opacity="0.25"></stop>
+<stop offset="1" stop-color="#0d7ff2" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Area Fill -->
+<path d="M-10 120 C 40 120, 60 90, 100 80 C 140 70, 160 100, 200 60 C 240 20, 280 40, 320 30 C 350 22, 380 10, 390 0 V 200 H -10 Z" fill="url(#chartGradient)"></path>
+<!-- Line -->
+<path d="M-10 120 C 40 120, 60 90, 100 80 C 140 70, 160 100, 200 60 C 240 20, 280 40, 320 30 C 350 22, 380 10, 390 0" stroke="#0d7ff2" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+<!-- Active Dot -->
+<circle class="z-30 relative" cx="200" cy="60" fill="#0d7ff2" r="5" stroke="#101922" stroke-width="3"></circle>
+</svg>
+</div>
+<!-- Top Stocks Section -->
+<div class="flex-1 flex flex-col px-5">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-white text-lg font-bold">Top Stocks</h3>
+<button class="text-primary text-sm font-semibold hover:text-primary/80">See All</button>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Stock Card 1: AAPL -->
+<div class="flex items-center justify-between bg-surface-dark p-4 rounded-xl border border-white/5 hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-10 rounded-full bg-white text-black font-bold text-xs shrink-0">
+<!-- In a real app, this would be a logo -->
+<span class="material-symbols-outlined">dataset</span>
+</div>
+<div>
+<h4 class="text-white font-bold text-base leading-none mb-1">AAPL</h4>
+<p class="text-slate-400 text-xs font-medium">Apple Inc.</p>
+</div>
+</div>
+<!-- Sparkline SVG -->
+<div class="hidden sm:block w-16 h-8">
+<svg class="w-full h-full stroke-accent-green" fill="none" stroke-width="2" viewbox="0 0 60 30">
+<path d="M0 25 L10 20 L20 22 L30 10 L40 15 L50 5 L60 8"></path>
+</svg>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-white font-bold text-base leading-none mb-1">$175.40</span>
+<div class="flex items-center gap-0.5 text-accent-green">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+<span class="text-xs font-bold">1.2%</span>
+</div>
+</div>
+</div>
+<!-- Stock Card 2: TSLA -->
+<div class="flex items-center justify-between bg-surface-dark p-4 rounded-xl border border-white/5 hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-10 rounded-full bg-slate-700 text-white font-bold text-xs shrink-0">
+<span class="material-symbols-outlined">electric_car</span>
+</div>
+<div>
+<h4 class="text-white font-bold text-base leading-none mb-1">TSLA</h4>
+<p class="text-slate-400 text-xs font-medium">Tesla, Inc.</p>
+</div>
+</div>
+<!-- Sparkline SVG -->
+<div class="hidden sm:block w-16 h-8">
+<svg class="w-full h-full stroke-accent-red" fill="none" stroke-width="2" viewbox="0 0 60 30">
+<path d="M0 5 L10 10 L20 8 L30 18 L40 15 L50 25 L60 22"></path>
+</svg>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-white font-bold text-base leading-none mb-1">$240.50</span>
+<div class="flex items-center gap-0.5 text-accent-red">
+<span class="material-symbols-outlined text-[14px]">arrow_downward</span>
+<span class="text-xs font-bold">0.8%</span>
+</div>
+</div>
+</div>
+<!-- Stock Card 3: VNM -->
+<div class="flex items-center justify-between bg-surface-dark p-4 rounded-xl border border-white/5 hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-10 rounded-full bg-orange-600 text-white font-bold text-xs shrink-0">
+                            VNM
+                        </div>
+<div>
+<h4 class="text-white font-bold text-base leading-none mb-1">VNM</h4>
+<p class="text-slate-400 text-xs font-medium">VinFast</p>
+</div>
+</div>
+<!-- Sparkline SVG -->
+<div class="hidden sm:block w-16 h-8">
+<svg class="w-full h-full stroke-accent-green" fill="none" stroke-width="2" viewbox="0 0 60 30">
+<path d="M0 28 L10 24 L20 20 L30 10 L40 5 L50 12 L60 2"></path>
+</svg>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-white font-bold text-base leading-none mb-1">$15.20</span>
+<div class="flex items-center gap-0.5 text-accent-green">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+<span class="text-xs font-bold">4.5%</span>
+</div>
+</div>
+</div>
+<!-- Stock Card 4: NVDA -->
+<div class="flex items-center justify-between bg-surface-dark p-4 rounded-xl border border-white/5 hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-10 rounded-full bg-green-700 text-white font-bold text-xs shrink-0">
+<span class="material-symbols-outlined">memory</span>
+</div>
+<div>
+<h4 class="text-white font-bold text-base leading-none mb-1">NVDA</h4>
+<p class="text-slate-400 text-xs font-medium">NVIDIA Corp</p>
+</div>
+</div>
+<!-- Sparkline SVG -->
+<div class="hidden sm:block w-16 h-8">
+<svg class="w-full h-full stroke-accent-green" fill="none" stroke-width="2" viewbox="0 0 60 30">
+<path d="M0 15 L10 18 L20 12 L30 10 L40 8 L50 4 L60 0"></path>
+</svg>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-white font-bold text-base leading-none mb-1">$485.09</span>
+<div class="flex items-center gap-0.5 text-accent-green">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+<span class="text-xs font-bold">2.1%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action Button -->
+<div class="fixed bottom-24 right-5 z-40">
+<button class="flex items-center justify-center size-14 rounded-full bg-primary text-white shadow-[0_4px_14px_rgba(13,127,242,0.4)] hover:bg-blue-600 transition-transform active:scale-95">
+<span class="material-symbols-outlined" style="font-size: 28px;">add</span>
+</button>
+</div>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 w-full bg-[#101922]/90 backdrop-blur-lg border-t border-white/5 pb-6 pt-3 px-6 z-50">
+<div class="flex items-center justify-between">
+<button class="flex flex-col items-center gap-1 text-primary w-16">
+<span class="material-symbols-outlined filled" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-bold">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500 hover:text-slate-300 transition-colors w-16">
+<span class="material-symbols-outlined">list</span>
+<span class="text-[10px] font-medium">Watchlist</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500 hover:text-slate-300 transition-colors w-16">
+<span class="material-symbols-outlined">candlestick_chart</span>
+<span class="text-[10px] font-medium">Trade</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500 hover:text-slate-300 transition-colors w-16">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</button>
+</div>
+</nav>
+</div>
+</body></html>

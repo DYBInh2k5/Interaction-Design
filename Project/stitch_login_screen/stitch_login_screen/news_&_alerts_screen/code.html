@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StockVision - News &amp; Alerts</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec5b",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#102216",
+                        "surface-dark": "#1c2e22",
+                        "alert-red": "#ff4b4b",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hiding for clean UI */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary selection:text-black pb-24">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-gray-200 dark:border-white/5 px-4 py-3 flex items-center justify-between">
+<h1 class="text-xl font-bold tracking-tight">Market News &amp; Alerts</h1>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+<button class="flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</header>
+<!-- Filter Chips -->
+<div class="w-full overflow-x-auto hide-scrollbar px-4 py-4 bg-background-light dark:bg-background-dark">
+<div class="flex gap-3 min-w-max">
+<button class="flex h-8 items-center justify-center px-4 rounded-full bg-primary text-black font-semibold text-sm shadow-[0_0_10px_rgba(19,236,91,0.3)]">
+                All
+            </button>
+<button class="flex h-8 items-center justify-center px-4 rounded-full bg-white/10 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-300 font-medium text-sm hover:bg-white/20 dark:hover:bg-white/10 transition-all">
+<span class="material-symbols-outlined text-[18px] mr-1 text-alert-red">warning</span>
+                Alerts
+            </button>
+<button class="flex h-8 items-center justify-center px-4 rounded-full bg-white/10 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-300 font-medium text-sm hover:bg-white/20 dark:hover:bg-white/10 transition-all">
+                News
+            </button>
+<button class="flex h-8 items-center justify-center px-4 rounded-full bg-white/10 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-300 font-medium text-sm hover:bg-white/20 dark:hover:bg-white/10 transition-all">
+                Updates
+            </button>
+</div>
+</div>
+<!-- Section 1: Critical Alerts (Horizontal Scroll) -->
+<section class="mt-2">
+<div class="flex items-center justify-between px-4 mb-3">
+<h3 class="text-lg font-bold flex items-center gap-2">
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-alert-red opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-alert-red"></span>
+</span>
+                Critical Alerts
+            </h3>
+<span class="text-xs font-medium text-gray-500 cursor-pointer hover:text-white">View All</span>
+</div>
+<div class="flex overflow-x-auto hide-scrollbar gap-4 px-4 pb-4 snap-x snap-mandatory">
+<!-- Card 1: Negative Alert -->
+<div class="snap-center shrink-0 w-[85vw] max-w-[360px] bg-white dark:bg-surface-dark rounded-xl p-4 shadow-lg border-l-4 border-alert-red relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl text-alert-red">trending_down</span>
+</div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-alert-red/20 text-alert-red mb-2">ALERT</span>
+<h4 class="text-xl font-bold dark:text-white">TSLA</h4>
+<p class="text-sm text-gray-500 dark:text-gray-400">Tesla, Inc.</p>
+</div>
+<div class="text-right">
+<p class="text-xl font-bold text-alert-red flex items-center justify-end">
+<span class="material-symbols-outlined text-lg mr-1">arrow_downward</span>
+                            5.2%
+                        </p>
+<p class="text-xs text-gray-500">Last 1h</p>
+</div>
+</div>
+<div class="space-y-3 relative z-10">
+<p class="text-sm font-medium dark:text-gray-200">High Volatility detected. Support broken at $180.</p>
+<div class="flex items-center justify-between">
+<span class="text-xs text-gray-500">2m ago</span>
+<button class="bg-white/10 hover:bg-white/20 text-sm font-medium py-1.5 px-3 rounded-lg flex items-center transition-colors">
+                            View Details
+                            <span class="material-symbols-outlined text-base ml-1">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2: Positive Alert -->
+<div class="snap-center shrink-0 w-[85vw] max-w-[360px] bg-white dark:bg-surface-dark rounded-xl p-4 shadow-lg border-l-4 border-primary relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl text-primary">trending_up</span>
+</div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-primary/20 text-primary mb-2">OPPORTUNITY</span>
+<h4 class="text-xl font-bold dark:text-white">NVDA</h4>
+<p class="text-sm text-gray-500 dark:text-gray-400">NVIDIA Corp</p>
+</div>
+<div class="text-right">
+<p class="text-xl font-bold text-primary flex items-center justify-end">
+<span class="material-symbols-outlined text-lg mr-1">arrow_upward</span>
+                            3.1%
+                        </p>
+<p class="text-xs text-gray-500">Breakout</p>
+</div>
+</div>
+<div class="space-y-3 relative z-10">
+<p class="text-sm font-medium dark:text-gray-200">Volume spike detected (+240%). New ATH imminent.</p>
+<div class="flex items-center justify-between">
+<span class="text-xs text-gray-500">10m ago</span>
+<button class="bg-white/10 hover:bg-white/20 text-sm font-medium py-1.5 px-3 rounded-lg flex items-center transition-colors">
+                            View Details
+                            <span class="material-symbols-outlined text-base ml-1">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Latest Market News (Vertical List) -->
+<section class="mt-6 px-4">
+<h3 class="text-lg font-bold mb-4 px-1">Latest Market News</h3>
+<div class="flex flex-col gap-4">
+<!-- News Item 1 -->
+<article class="bg-white dark:bg-surface-dark rounded-xl p-3 flex gap-4 shadow-sm active:scale-[0.99] transition-transform cursor-pointer">
+<div class="w-24 h-24 shrink-0 rounded-lg overflow-hidden bg-gray-800">
+<img class="w-full h-full object-cover" data-alt="Abstract financial graph showing growth" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqoMe5sNykBhHmz87Sn926HCtG-608DwELizh6q8Gx836iKpKcnbAMIf0xMw3iQYh2YleV8y1kB1Oh0HwpHOlprrDSj2mJJmk6s1XO95BhqOlIjF8XpMde-zTmIw5WSZfhgh7WhYVhiiWvr04Gp3A3qfXES3Bg-epLnMRo0VzjDF-GcJ0nNNcMoXSZ_qKW9tpwiQ4zGsq5-zz7y6g1SGhXttvLd3-f87Nz6ibK6mHOdUOhq6JyW6eRmWNYgP_3afjeS9yAsJQF8v0K"/>
+</div>
+<div class="flex flex-col justify-between flex-1 py-1">
+<div class="flex items-center justify-between mb-1">
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary">Macro</span>
+<span class="material-symbols-outlined text-gray-500 text-sm">bookmark_add</span>
+</div>
+<h4 class="text-sm font-bold leading-snug line-clamp-2 dark:text-gray-100">Fed interest rate update affects tech stocks immediately</h4>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center gap-2 text-xs text-gray-500">
+<span class="font-medium text-gray-400">Bloomberg</span>
+<span>•</span>
+<span>5m ago</span>
+</div>
+<span class="text-[10px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-gray-400">#Economy</span>
+</div>
+</div>
+</article>
+<!-- News Item 2 -->
+<article class="bg-white dark:bg-surface-dark rounded-xl p-3 flex gap-4 shadow-sm active:scale-[0.99] transition-transform cursor-pointer">
+<div class="w-24 h-24 shrink-0 rounded-lg overflow-hidden bg-gray-800">
+<img class="w-full h-full object-cover" data-alt="Electric vehicle charging station" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBi3aJB64BaxnqinW-CzxNiX1xTPizr7P4iEj6spFTx-g4wJ1wKOHnNXRuJt02-1DmTt_QTw29xI02mECAWh-rTQrv22nb7QO4Clk1BQHVyB165OAIx5qSRO3gV0AapluF0fjgHXZQTfI7XqpgKhS-cugiX4wc5_poFcME01L-uCloeNGapObOjZ2fd2uxEvsK8CO1k7vq62JroMGrnakjFztyqDhF3xmCjMIKEUTFnwv406rQjL14Fie2_dwpjPQ7tI7UPdz8Eqp26"/>
+</div>
+<div class="flex flex-col justify-between flex-1 py-1">
+<div class="flex items-center justify-between mb-1">
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary">Auto</span>
+<span class="material-symbols-outlined text-gray-500 text-sm">bookmark_add</span>
+</div>
+<h4 class="text-sm font-bold leading-snug line-clamp-2 dark:text-gray-100">Rivian announces new production goals for Q4 2024</h4>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center gap-2 text-xs text-gray-500">
+<span class="font-medium text-gray-400">CNBC</span>
+<span>•</span>
+<span>25m ago</span>
+</div>
+<span class="text-[10px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-gray-400">#EV</span>
+</div>
+</div>
+</article>
+<!-- News Item 3 -->
+<article class="bg-white dark:bg-surface-dark rounded-xl p-3 flex gap-4 shadow-sm active:scale-[0.99] transition-transform cursor-pointer">
+<div class="w-24 h-24 shrink-0 rounded-lg overflow-hidden bg-gray-800">
+<img class="w-full h-full object-cover" data-alt="Computer screen with cryptocurrency charts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALLg52zFnwgR4U23_HMlQ429gXWW6gAg0FSxg-aogDyLgxSyHY19tsQU588v73Fsyk4aN2-vLUWBaXhZOwdYUPRf8SdTZAafKSR2XnWJUgIbB7Jaf-lxoZ9c5aD1N3h2l1dZ45ierZcodEUqgdR8vw2W2aOxXxD6fYouMOFC-FIQnsqp2TZRDGs8ZnD8Ie5eeWHxYESxFT_8fX_On71ulMgflw6m-CS8vjr0fyz_hjNDiwprM_LWbOhnQpNoR10R5gg1QQEvr-dWt4"/>
+</div>
+<div class="flex flex-col justify-between flex-1 py-1">
+<div class="flex items-center justify-between mb-1">
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary">Crypto</span>
+<span class="material-symbols-outlined text-gray-500 text-sm">bookmark_add</span>
+</div>
+<h4 class="text-sm font-bold leading-snug line-clamp-2 dark:text-gray-100">Bitcoin breaks resistance at $65k amid ETF inflow surge</h4>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center gap-2 text-xs text-gray-500">
+<span class="font-medium text-gray-400">CoinDesk</span>
+<span>•</span>
+<span>1h ago</span>
+</div>
+<span class="text-[10px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-gray-400">#BTC</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Section 3: Personal Notifications -->
+<section class="mt-8 px-4 mb-8">
+<div class="flex items-center justify-between mb-4 px-1">
+<h3 class="text-lg font-bold">Notifications</h3>
+<div class="flex items-center gap-2">
+<span class="text-[10px] bg-primary/20 text-primary px-2 py-1 rounded font-bold">2 NEW</span>
+<button class="text-gray-500 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-xl">mark_email_read</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-xl overflow-hidden divide-y divide-gray-100 dark:divide-white/5">
+<!-- Notification 1 -->
+<div class="p-4 flex items-center gap-4 hover:bg-white/5 transition-colors">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-xl">notifications_active</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-semibold dark:text-white">AAPL Price Target Reached</p>
+<p class="text-xs text-gray-500 mt-0.5">Stock hit your alert price of $185.00</p>
+</div>
+<button class="text-gray-500 hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Notification 2 -->
+<div class="p-4 flex items-center gap-4 hover:bg-white/5 transition-colors">
+<div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-blue-400 text-xl">pie_chart</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-semibold dark:text-white">Weekly Portfolio Summary</p>
+<p class="text-xs text-gray-500 mt-0.5">Your performance report is ready to view.</p>
+</div>
+<button class="text-gray-500 hover:text-white">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Floating Action Button: Quiet Mode -->
+<div class="fixed bottom-20 right-4 z-40">
+<button class="flex items-center justify-center w-12 h-12 bg-gray-800 text-gray-400 rounded-full shadow-lg border border-gray-700 hover:bg-gray-700 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-xl">do_not_disturb_on</span>
+</button>
+</div>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 w-full bg-background-light dark:bg-[#0c1a11] border-t border-gray-200 dark:border-white/5 pb-safe z-50">
+<div class="flex justify-around items-center h-16 max-w-lg mx-auto px-2">
+<a class="flex flex-col items-center justify-center w-full h-full text-gray-500 dark:text-gray-400 hover:text-primary gap-1" href="#">
+<span class="material-symbols-outlined text-2xl">dashboard</span>
+<span class="text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-gray-500 dark:text-gray-400 hover:text-primary gap-1" href="#">
+<span class="material-symbols-outlined text-2xl">visibility</span>
+<span class="text-[10px] font-medium">Watchlist</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full relative -top-5" href="#">
+<div class="w-14 h-14 bg-primary rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(19,236,91,0.4)] text-black transform hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-2xl">currency_exchange</span>
+</div>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-primary gap-1" href="#">
+<span class="material-symbols-outlined text-2xl fill-1">newspaper</span>
+<span class="text-[10px] font-medium">News</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-gray-500 dark:text-gray-400 hover:text-primary gap-1" href="#">
+<span class="material-symbols-outlined text-2xl">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</a>
+</div>
+</nav>
+<!-- iOS Safe Area Padding adjustment -->
+<div class="h-6 w-full"></div>
+</body></html>
